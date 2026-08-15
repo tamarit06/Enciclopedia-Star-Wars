@@ -1,0 +1,19 @@
+.card {
+  background-color: #11151f;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  width: 250px;
+  transition: transform 0,3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card h2 {
+  color: #ffe81f;
+  margin-bottom: 15px;
+}
+.card p {
+  color: #cccccc;
+  margin-bottom: 8px;
+}

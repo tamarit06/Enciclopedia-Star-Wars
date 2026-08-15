@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #05070d;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.app{
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.app h1 {
+  text-align: center;
+  color: #ffe81f;
+  font-size: 50px;
+    margin-bottom: 30px;
+  letter-spacing: 3px;
+}

@@ -1,0 +1,36 @@
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.search-bar select {
+  padding: 10px;
+  background-color: #11151f;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+.search-bar input{
+
+    width: 300px;
+  padding: 10px;
+  background-color: #11151f;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+.search-bar button{
+      padding: 10px 20px;
+  background-color: #ffe81f;
+  color: #05070d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-bar button:hover {
+  background-color: #fdf28d;
+  color: #05070d;
+}

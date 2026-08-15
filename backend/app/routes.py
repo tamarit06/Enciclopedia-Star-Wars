@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 @router.get("/characters")
-def list_characters(page: int = 1,search: str = ""):
-    return get_characters(page,search)
+def list_characters():
+    return get_characters()
 
 @router.get("/characters/{character_id}")
 def get_character(character_id: int):

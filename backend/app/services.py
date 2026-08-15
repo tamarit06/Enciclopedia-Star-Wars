@@ -1,37 +1,39 @@
 import requests
-url = "https://swapi.dev/api/people/"
+url = "https://swapi.info/api/people"
 
-def get_characters(page:int,search:str):
-    params = {}
-    if search:
-        params = {"search": search}
-    else:
-        params = {"page": page}
-    response = requests.get(url, params=params)
+
+def get_characters():
+
+    response = requests.get(url)
+
     if response.status_code != 200:
         return {"error": "Failed to fetch characters"}
-    data=response.json()
-    characters =[]
-    for character in data['results']:
+
+    data = response.json()
+
+    characters = []
+
+    for character in data:
         characters.append({
-            "name": character['name'],
-             "gender": character["gender"],
-             "id": int(character['url'].split("/")[-2])
+            "name": character["name"],
+            "gender": character["gender"]
         })
-    info={
-        "count": data['count'],
-        "next": data['next'],
-        "previous": data['previous'],
+
+    return {
         "characters": characters
-        }
-    return info
+    }
+
+ 
 
 def get_character_by_id(character_id:int):  
-    url_with_id = f"{url}{character_id}/"
+    url_with_id = f"{url}/{character_id}"
+
     response = requests.get(url_with_id)
+  
     if response.status_code != 200:
         return {"error": "Character not found"}
     data=response.json()
+   
     films=get_resource_data(data["films"],["title","release_date"])
     species=get_resource_data(data["species"],["name","classification","language"])
     starships = get_resource_data(data["starships"],["name","model"])
@@ -60,5 +62,4 @@ def get_resource_data(urls,campos):
                 {campo: item_data[campo] for campo in campos}
             )
     return result
-d=get_character_by_id(2)
-print(d)
+get_character_by_id(1)
