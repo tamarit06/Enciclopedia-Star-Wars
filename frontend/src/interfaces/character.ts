@@ -1,4 +1,5 @@
 export interface Character {
+    id:number;
     name: string;
     height: string;
     mass: string;
@@ -7,11 +8,28 @@ export interface Character {
     skin_color: string;
     eye_color: string;
     birth_year: string;
-    films: string[];
-    species: string[];
-    starships: string[];
-    vehicles: string[];
+    films: Film[];
+    species: Species[];
+    starships: Starship[];
+    vehicles: Vehicle[];
+}
+export interface Film {
+  title: string;
+  release_date: string;
+}
+export interface Species {
+  name: string;
+  classification: string;
+  language: string;
 }
 
+export interface Starship {
+  name: string;
+  model: string;
+}
 
+export interface Vehicle {
+  name: string;
+  model: string;
+}
 

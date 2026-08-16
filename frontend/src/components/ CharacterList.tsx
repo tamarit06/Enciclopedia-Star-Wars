@@ -3,12 +3,14 @@ import type { Character } from "../interfaces/character";
 import "./CharacterList.css"
 type Props={
     characters:Character[];
+    onCharacterClick:(id:number)=>void;
 }
-function CharacterList({characters}:Props) {
+function CharacterList({characters, onCharacterClick}:Props) {
     return(
         <div className="list">
         {characters.map((character) => (
-        <CharacterCard
+        <CharacterCard 
+        onClick={onCharacterClick}
           key={character.name}
           character={character}
         />

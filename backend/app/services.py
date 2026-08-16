@@ -10,13 +10,16 @@ def get_characters():
         return {"error": "Failed to fetch characters"}
 
     data = response.json()
+  
 
     characters = []
 
     for character in data:
+    
         characters.append({
             "name": character["name"],
-            "gender": character["gender"]
+            "gender": character["gender"],
+           "id": int(character["url"].split("/")[-1]),
         })
 
     return {
@@ -38,7 +41,7 @@ def get_character_by_id(character_id:int):
     species=get_resource_data(data["species"],["name","classification","language"])
     starships = get_resource_data(data["starships"],["name","model"])
     vehicles=get_resource_data(data["vehicles"],["name","model"])
-    character={
+    character={    
         "name": data['name'],
         "height": data['height'], 
         "mass": data['mass'], 
@@ -62,4 +65,5 @@ def get_resource_data(urls,campos):
                 {campo: item_data[campo] for campo in campos}
             )
     return result
-get_character_by_id(1)
+get_characters()
+    

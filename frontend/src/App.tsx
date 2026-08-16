@@ -4,6 +4,9 @@ import { getCharacterById, getCharacters } from "./services/characterService";
 import type { Character } from "./interfaces/character";
 import SearchBar from "./components/SearchBar";
 import "./App.css"
+import { Routes, Route, useNavigate } from "react-router-dom";
+import CharacterDetail from "./pages/CharacterDetails";
+
 
 function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -11,6 +14,10 @@ function App() {
   const [error, setError] = useState("");
   const [search,setSearch]=useState<string>("");
   const[searchType,setSearchType]=useState<"name"|"id">("name");
+  const navigate=useNavigate();
+  const handleCharacterClick = (id: number) => {
+  navigate(`/characters/${id}`);
+};
 
 useEffect(() => {
   
@@ -60,12 +67,34 @@ const onSearch = (
   setSearchType(type);
 };
 
-  return (
-    <div className="app">
-      <h1>Star Wars Encyclopedia</h1>
-    <SearchBar onSearch={onSearch}/>
-    <CharacterList characters={characters}></CharacterList>
-    </div>
+
+ return (
+  
+      <Routes>
+
+        <Route
+          path="/"
+          element={
+            <div>
+              <h1>Star Wars Encyclopedia</h1>
+
+              <SearchBar onSearch={onSearch} />
+
+              <CharacterList
+                characters={characters}
+                onCharacterClick={handleCharacterClick}
+              />
+            </div>
+          }
+        />
+
+        <Route
+          path="/characters/:id"
+          element={<CharacterDetail />}
+        />
+
+      </Routes>
+
   );
 }
 
