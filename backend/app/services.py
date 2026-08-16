@@ -89,5 +89,5 @@ def get_resource_data(urls,campos):
                 {campo: item_data[campo] for campo in campos}
             )
     return result
-get_character_by_id(2)
+
     
