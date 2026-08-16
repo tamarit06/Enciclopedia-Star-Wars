@@ -3,10 +3,9 @@ import type { Character } from "../interfaces/character";
 const API_URL = "http://127.0.0.1:8000";
 
 export async function getCharacters(search: string = ""): Promise<Character[]> {
-  const response = await fetch(
-    `${API_URL}/characters${encodeURIComponent(search)}`
-  );
-
+ const response = await fetch(
+  `${API_URL}/characters?search=${encodeURIComponent(search)}`
+);
   if (!response.ok) {
     throw new Error("Error al obtener los personajes");
   }
@@ -30,4 +29,14 @@ export async function getCharacterById(
 
   return response.json();
 }
-console.log(getCharacterById(3))
+export async function getCharacterDetails(id: number) {
+  const response = await fetch(
+    `${API_URL}/characters/${id}/details`
+  );
+
+  if (!response.ok) {
+    throw new Error("No se pudieron cargar los detalles");
+  }
+
+  return response.json();
+}

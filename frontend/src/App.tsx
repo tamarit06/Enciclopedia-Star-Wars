@@ -25,7 +25,7 @@ useEffect(() => {
   async function loadCharacters() {
     try {
      
-
+      console.log(search)
       if (searchType === "name") {
         const data = await getCharacters(search);
 

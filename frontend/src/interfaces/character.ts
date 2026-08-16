@@ -8,10 +8,13 @@ export interface Character {
     skin_color: string;
     eye_color: string;
     birth_year: string;
-    films: Film[];
-    species: Species[];
-    starships: Starship[];
-    vehicles: Vehicle[];
+
+}
+export interface CharacterDetails {
+  films: Film[];
+  species: Species[];
+  vehicles: Vehicle[];
+  starships: Starship[];
 }
 export interface Film {
   title: string;
