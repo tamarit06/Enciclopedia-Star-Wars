@@ -1,6 +1,6 @@
 import type { Character } from "../interfaces/character";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "";
 
 export async function getCharacters(search: string = ""): Promise<Character[]> {
  const response = await fetch(

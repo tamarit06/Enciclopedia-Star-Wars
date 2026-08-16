@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./SearchBar.css"
 type Props={
     onSearch: (query: string,type:"name"|"id") => void;
