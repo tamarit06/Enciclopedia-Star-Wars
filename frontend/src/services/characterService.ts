@@ -1,6 +1,6 @@
 import type { Character } from "../interfaces/character";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getCharacters(search: string = ""): Promise<Character[]> {
  const response = await fetch(
@@ -20,7 +20,7 @@ export async function getCharacterById(
 ): Promise<Character> {
 
   const response = await fetch(
-    `http://127.0.0.1:8000/characters/${id}`
+    `${API_URL}/characters/${id}`
   );
 
   if (!response.ok) {

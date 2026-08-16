@@ -1,10 +1,14 @@
 import requests
-url = "https://swapi.info/api/people"
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
+SWAPI_URL = os.getenv("SWAPI_URL")
+print(SWAPI_URL)
 
 def get_characters(search: str = ""):
 
-    response = requests.get(url)
+    response = requests.get(SWAPI_URL)
+    print(response.json())
 
     if response.status_code != 200:
         return {"error": "Failed to fetch characters"}
@@ -29,7 +33,8 @@ def get_characters(search: str = ""):
  
 
 def get_character_by_id(character_id:int):  
-    url_with_id = f"{url}/{character_id}"
+    url_with_id = f"{SWAPI_URL}/{character_id}"
+    print (url_with_id)
 
     response = requests.get(url_with_id)
   
@@ -53,7 +58,7 @@ def get_character_by_id(character_id:int):
     }
     return character
 def get_character_details(character_id:int):
-        url_with_id = f"{url}/{character_id}"
+        url_with_id = f"{SWAPI_URL}/{character_id}"
     
         response = requests.get(url_with_id)
       
@@ -84,5 +89,5 @@ def get_resource_data(urls,campos):
                 {campo: item_data[campo] for campo in campos}
             )
     return result
-get_characters()
+get_character_by_id(2)
     
