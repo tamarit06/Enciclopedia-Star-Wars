@@ -1,15 +1,13 @@
 import requests
 import os
-from dotenv import load_dotenv
 
-SWAPI_URL = os.environ.get("SWAPI_URL")
-print("SWAPI_URL:", SWAPI_URL)
+SWAPI_URL ="https://swapi.info/api/people"
+
 
 def get_characters(search: str = ""):
 
     response = requests.get(SWAPI_URL)
-    print(response.json())
-
+   
     if response.status_code != 200:
         return {"error": "Failed to fetch characters"}
 
@@ -89,5 +87,3 @@ def get_resource_data(urls,campos):
                 {campo: item_data[campo] for campo in campos}
             )
     return result
-
-    
