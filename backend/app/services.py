@@ -1,9 +1,9 @@
 import requests
 import os
 from dotenv import load_dotenv
-load_dotenv()
-SWAPI_URL = os.getenv("SWAPI_URL")
-print(SWAPI_URL)
+
+SWAPI_URL = os.environ.get("SWAPI_URL")
+print("SWAPI_URL:", SWAPI_URL)
 
 def get_characters(search: str = ""):
 
